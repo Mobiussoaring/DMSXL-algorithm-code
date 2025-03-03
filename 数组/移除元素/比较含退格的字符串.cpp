@@ -8,11 +8,11 @@ class Solution
 public:
     bool backspaceCompare(string s, string t)
     {
-        int sIndex = s.size() - 1, tIndex = t.size() - 1;
-        int skipS = 0, skipT = 0;
-        while (sIndex >= 0 || tIndex >= 0)
+        int sIndex = s.size() - 1, tIndex = t.size() - 1; // 从右向左
+        int skipS = 0, skipT = 0;                         // 记录此时有有多少个退格
+        while (sIndex >= 0 || tIndex >= 0)                // 考虑最后可能index一正一负，所以取或
         {
-            while (sIndex >= 0)
+            while (sIndex >= 0) // 找到s没被退格的下一个字母
             {
                 if (s[sIndex] == '#')
                 {
@@ -30,7 +30,7 @@ public:
                 }
             }
 
-            while (tIndex >= 0)
+            while (tIndex >= 0) // 找到t没被退格的下一个字母
             {
                 if (t[tIndex] == '#')
                 {
@@ -48,7 +48,7 @@ public:
                 }
             }
 
-            if (sIndex >= 0 && tIndex >= 0)
+            if (sIndex >= 0 && tIndex >= 0) // 都大于零才能判断
             {
                 if (s[sIndex] != t[tIndex])
                 {
@@ -62,13 +62,13 @@ public:
             }
             else
             {
-                if (sIndex >= 0 || tIndex >= 0)
+                if (sIndex >= 0 || tIndex >= 0) // 一正一负，字符串不相等
                 {
                     return false;
                 }
-                break;
+                break; // 都小于零，字符串相等，提前退出循环
             }
         }
-        return true;
+        return true; // 上面都小于零已经退出了循环，字符串相等
     }
 };
