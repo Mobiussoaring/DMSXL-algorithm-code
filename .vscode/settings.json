@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "valarray": "cpp",
+        "chrono": "cpp",
+        "complex": "cpp"
+    }
+}
